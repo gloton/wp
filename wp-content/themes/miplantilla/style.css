@@ -7,3 +7,78 @@ Version: 1.0
 */
 /*PARA QUE WORDPRESS RECONOZCA LA PLANTILLA TIENE OBLIGATORIAMENTE 
 QUE IR EL CODIGO DE ARRIBA TAL CUAL ESTA*/
+
+body {
+	background: #ccc;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+#contenedorPrincipal {
+	margin: 0 auto;
+	width: 940px;
+	padding: 10px;
+	background: #fff;
+}
+
+header {
+	border-bottom: 2px #666 solid;
+	margin-bottom: 20px;
+}
+header h1 {
+	font-size: 2.5em;
+}
+
+nav.menuPrincipal {
+	padding: 5px;
+}
+nav.menuPrincipal ul li{
+	display: inline;
+	list-style: none;
+	margin-right: 20px;
+}
+
+#contentWrap{
+	width: 100%;
+	overflow: auto;
+}
+
+#contenido{
+	width: 700px;
+	float: right;
+}
+
+#content article, .widget-area aside{
+	margin-bottom: 20px;
+}
+
+div.entry, div.entry p{
+	margin: 10px 0;
+}
+
+.widget-area{
+	width: 220px;
+}
+
+/* AHORA QUEREMOS ACCEDER AL INPUT DEL FORMULARIO DE BUSQUEDA, PERO SOLO SABEMOS EL CODIGO DE LA FUNCION, PARA ESTE CASO, DREAMWEAVER TIENE UNA FUNCIONALIDAD LLAMADA CODIGO EN VIVO QUE NOS MUESTRA EL CODIGO COMPLETO QUE GENERA LA VISTA EN VIVO.  */
+
+input.s {
+	width: 150px;
+}
+
+footer {
+	border-top: 2px #666 solid;
+	font-size: .8em;
+	text-align: center;
+	padding: 10px;
+}

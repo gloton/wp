@@ -41,8 +41,8 @@ get_header();
 			<!-- SI HAY ENTRADAS -->
 			<h2>No existen entradas</h2>
 	<?php endif; ?>
-	<?php get_sidebar(); ?>
-	
 	</div>
+	<h4>Sidebar</h4>
+	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

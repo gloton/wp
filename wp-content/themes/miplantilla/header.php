@@ -45,7 +45,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<div class="contenedorPrincipal">
+	<div id="contenedorPrincipal">
 		<header>
 			<!-- get_option('home') enlace al sitio  -->
 			<!-- bloginfo('name') nombre del sitio  -->
