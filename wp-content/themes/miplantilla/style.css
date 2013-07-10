@@ -82,3 +82,7 @@ footer {
 	text-align: center;
 	padding: 10px;
 }
+.page #contenido {
+	width: 940px;
+	float: none;
+}

@@ -1,6 +1,5 @@
 <?php
-#single lo genere a partir de index.php
-
+#page lo quenere a partir de single
 //incluiremos la cabecera, es decir, header.php
 get_header();
 ?>
@@ -50,7 +49,5 @@ get_header();
 			<h2>No existen entradas</h2>
 	<?php endif; ?>
 	</div>
-	<h4>Sidebar</h4>
-	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
