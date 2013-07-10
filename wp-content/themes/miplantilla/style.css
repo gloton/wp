@@ -86,3 +86,16 @@ footer {
 	width: 940px;
 	float: none;
 }
+/*cuando el dispositivo sea menor a 768 pixeles de ancho, aplique las reglas que contiene*/
+/*ejemplo ipad*/
+@media screen and (max-width:768px) {
+	 body {
+		 background-color:red;
+	 }
+}
+/*ejemplo movil*/
+@media screen and (max-width:320px) {
+	 body {
+		 background-color:green;
+	 }
+}
