@@ -13,5 +13,12 @@ function my_plugin_activate() {
 }
 
 //esta accion sirve para ejecutar una funcion cuando se activa el plugin
-register_activation_hook(__FILE__, "my_plugin_activate")
+register_activation_hook(__FILE__, "my_plugin_activate");
+
+function my_plugin_deactivate() {
+	//esta funcion dara x
+	error_log("Has desactivado mi plugin");
+}
+
+register_deactivation_hook(__FILE__, "my_plugin_deactivate")
  ?>
