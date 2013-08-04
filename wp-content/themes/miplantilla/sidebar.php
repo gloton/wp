@@ -1,5 +1,5 @@
 <div class="widget-area">
-	<!--  comprueba si existe un sidebar dinamico llamado sidebar-1 -->
+	<!--  comprueba si existe un sidebar dinamico llamado Sidebar Widgets -->
 	<?php if ( ! dynamic_sidebar( 'Sidebar Widgets' ) ): ?>
 	<?php endif; // fin del area de widgets ?>
 	<!-- añadiremos unos widget basicos que se mostraran en la pagina

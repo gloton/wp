@@ -32,25 +32,32 @@
 			echo " | " . sprintf( __( 'Page %s' ), max ( $paged, $page ) );
 	?>		
 	</title>
-	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="all" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	<link type="text/css" rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="all" />
+	<link type="text/css" rel="pingback"  href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!-- detecta los navegadores anteriores a ie9 y le aplica adapta a las funcionalidades mas mmodernas -->
 	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>//js/html5.js" type="text/javascript">
+	<!--  entrega la url a la plantilla http://localhost/wp/wp-content/themes/miplantilla  -->
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript">
 	</script> 
 	<![endif]-->
-	<!-- esta funcion detecta si es una pagina unica y si la opcion de comentarios esta disponible
-		en tal caso la funcion wp_enqueue_script devolvera el codigo javascript
+	<!-- esta funcion(is_singular) detecta si es una pagina unica y 
+	si la opcion de comentarios esta disponibleget_option( 'thread_comments' )
+	en tal caso la funcion wp_enqueue_script devolvera el codigo javascript(¿que codigo?)
 	 -->
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );  ?>
+	
+	<!-- la funcion wp_head() es necesaria para muchos plugin que la requieren para su funcionamiento -->
 	<?php wp_head(); ?>
 </head>
+<!-- body_class(); insertara un atributo class con sus valores que nos ayudaran a identificar la pagina 
+y nos ayudaran a aplicarle estilos personalizados, cada tipo de pagina recivira una clase 
+o varias diferentes, por lo que podremos aplicar estilos determinados a cada una. -->
 <body <?php body_class(); ?>>
 	<div id="contenedorPrincipal">
 		<header>
-			<!-- get_option('home') enlace al sitio  -->
-			<!-- bloginfo('name') nombre del sitio  -->
+			<!-- get_option('home') enlace al sitio http://localhost/wp/ -->
+			<!-- bloginfo('name') nombre del la pagina  -->
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 		</header>
-		<!-- Esta funcion convertira cualquier pagina creada en enlaces para el menu -->
+		<!-- wp_nav_menu() Esta funcion convertira cualquier pagina creada en enlaces para el menu -->
 		<nav class="menuPrincipal"><?php wp_nav_menu(); ?></nav>

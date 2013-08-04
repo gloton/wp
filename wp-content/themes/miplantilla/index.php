@@ -13,9 +13,9 @@ get_header();
 			<!-- cada entrada ira en una seccion llamada article con una clase determinada
 			y un id propio -->
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-				<!-- nombre de la entrada o post. Este nombre servira de enlace a un
+				<!-- nombre de la entrada o post. Este nombre servira de enlace(the_permalink()) a un
 				enlace permanente que llevara al usuario a visitar solamente esa entrada
-				solamente -->
+				solamente con el titulo the_title() -->
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<!-- informaremos sobre la fecha de creacion de la entrada
 				y el autor de la misma -->
@@ -27,8 +27,10 @@ get_header();
 					<!-- esto seria el contenido de la entrada -->
 					<?php the_content(); ?>
 				</div>	
-				<!-- div con los metadatos del post -->
+				<!-- div con los metadatos del post como seria categoria, etiquetas y comentarios si es que existen  -->
 				<div class="postmetadata">
+					<!-- recupera las etiquetas que el post tenga asignadas 
+					(texto, separador,al final de las etiquetas colocara un salto de lines) -->
 					<?php the_tags('Etiquetas:', ', ', '<br />');  ?>
 					<!-- the_category lista las categorias a las cuales pertenece la entrada sepradas por coma -->
 				    Publicado en <?php the_category(', ') ?> |
@@ -41,7 +43,7 @@ get_header();
 			<!-- SI HAY ENTRADAS -->
 			<h2>No existen entradas</h2>
 	<?php endif; ?>
-	</div>
+	</div><!-- fin del contenido -->
 	<h4>Sidebar</h4>
 	<?php get_sidebar(); ?>
 </div>
