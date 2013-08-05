@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name: welcome plugin
+Plugin Name: welcome plugin
 Plugin URI: http://www.elwebmaster.cl
 Description: Este plugin enviara un mail con un mensaje personalizado a los nuevos usuarios registrador.
 Version: 1.0
