@@ -42,6 +42,12 @@ class SimpleWidget extends WP_Widget {
 		#esta constante me garantiza que las variables se van a pasar correctamente
 		extract($args, EXTR_SKIP);
 		
+		#$instance['title']
+		#obtendra el titulo si es que lo tiene
+		
+		#$instance['body']
+		#obtendra el cuerpo si es que lo tiene
+		
 		$title = ($instance['title']) ? ($instance['title']) : 'Un Widget cualquiera';
 		$body = ($instance['body']) ? ($instance['body']) : 'texto de prueba';
 		?>
