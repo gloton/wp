@@ -22,7 +22,7 @@ add_action("comment_post", "cc_comment");
 //interfaz basica para el pluin
 function cccomm_option_page() {
 	
-	if ($_POST['ccomm_hidden'] == 'Y') {
+	if (check_admin_referer('cccome_admin_options-update')) {
 		update_option('cccomm_cc_email', $_POST['cc_email']);
 ?>
 		<div id="message" class="updated">El mail se guardo correctamente</div>
@@ -40,7 +40,7 @@ function cccomm_option_page() {
 			<p>
 				<input type="submit" name="submit" value="Gruardar email" />
 			</p>
-			<input type="hidden" name="ccomm_hidden" value="Y" />
+			<?php wp_nonce_field('cccome_admin_options-update')?>
 		</form>
 	</div>
 <?php 
