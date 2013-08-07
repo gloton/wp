@@ -10,7 +10,11 @@ Author URI: http://www.w7.cl
 
 class SimpleWidget extends WP_Widget {
 	function SimpleWidget () {
-		
+		$widget_options = array(
+				'classname' => 'simple-widget',
+				'description' => 'Un simple Widget'
+		);
+		parent::WP_Widget('simple_widget', 'Simple Widget', $widget_options);
 	}
 	
 	//vamos a declarar 3 funciones; widget, update y form, que haces que los widget funcionen correctamente
