@@ -7,13 +7,21 @@ Version: 1.0
 Author: Jorge Gatica
 Author URI: http://www.w7.cl
 */
-
+//ref:http://xref.wordpress.org/trunk/WordPress/Widgets/WP_Widget.html 
 class SimpleWidget extends WP_Widget {
+	#classname
+	# se agregara como clase al widget en el frontend
+	
+	#description
+	# esta es la descripcion del widget que aparece en el backend
+	
 	function SimpleWidget () {
 		$widget_options = array(
 				'classname' => 'simple-widget',
-				'description' => 'Un simple Widget'
+				'description' => 'Un simple Widget de jorge'
 		);
+		
+		//simple_widget vera reflejado en la funcion form
 		parent::WP_Widget('simple_widget', 'Simple Widget', $widget_options);
 	}
 	
@@ -45,17 +53,23 @@ class SimpleWidget extends WP_Widget {
 <?php 
 		
 	}
-	function update($new_instance, $old_instance) {
-		
-	}
 	function form($instance) {
-		
+?>
+		<label for="<?php echo $this->get_field_id('title')?>">Title:</label>
+		<input  id="<?php echo $this->get_field_id('title')?>" name="<?php echo $this->get_field_name('title')?>" value="<?php echo esc_attr($instance['title'])?>"/>
+		<label for="<?php echo $this->get_field_id('body')?>">body:</label>
+		<textarea  id="<?php echo $this->get_field_id('body')?>" name="<?php echo $this->get_field_name('body')?>"><?php echo esc_attr($instance['body'])?></textarea>
+<?php 		
 	}
 }
 
+/* INICIO REGISTRAR WIDGET*/
 function simple_widget_init() {
+	//llama a la funcion register_widget del archivo wp-includes/widgets.php
 	register_widget("SimpleWidget");
 }
 
+//para que aparezca este widget en el entorno de worpress hay que registralo con la accion widgets_init
 add_action('widgets_init', 'simple_widget_init');
+/* FIN REGISTRAR WIDGET*/
 ?>
