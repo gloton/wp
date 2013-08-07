@@ -21,12 +21,27 @@ add_action("comment_post", "cc_comment");
 
 //interfaz basica para el pluin
 function cccomm_option_page() {
+	
+	if ($_POST['ccomm_hidden'] == 'Y') {
+		update_option('cccomm_cc_email', $_POST['cc_email']);
+?>
+		<div id="message" class="updated">El mail se guardo correctamente</div>
+<?php 
+	}
 ?>
 	<div class="wrap">
 		<!-- screen_icon esta funcion mostrara el icono de los elementos que se estan visualizando -->
 		<?php screen_icon();?>
 		<h2>Plugin CC Comment</h2> 
 		<p>Bienvenido al plugin CC Comment</p>
+		<form action="" method="post" id="cc-comments-email-options-form">
+			<h3><label for="cc_email">Correo para enviar CC a: </label></h3>
+			<input type="text" id="cc_email" name="cc_email" value="<?php echo esc_attr(get_option('cccomm_cc_email'));?>" />
+			<p>
+				<input type="submit" name="submit" value="Gruardar email" />
+			</p>
+			<input type="hidden" name="ccomm_hidden" value="Y" />
+		</form>
 	</div>
 <?php 
 }
