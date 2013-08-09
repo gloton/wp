@@ -22,13 +22,15 @@ add_action("comment_post", "cc_comment");
 //interfaz basica para el pluin
 function cccomm_option_page() {
 	
-	if (check_admin_referer('cccome_admin_options-update')) {
+	if (check_admin_referer('cccom_admin_options-update')) {
+		echo '<script type="text/javascript">alert("jorge1");</script>' ;
 		update_option('cccomm_cc_email', $_POST['cc_email']);
 ?>
 		<div id="message" class="updated">El mail se guardo correctamente</div>
 <?php 
 	}
 ?>
+	<script type="text/javascript">alert("jorge2");</script>
 	<div class="wrap">
 		<!-- screen_icon esta funcion mostrara el icono de los elementos que se estan visualizando -->
 		<?php screen_icon();?>
@@ -38,9 +40,9 @@ function cccomm_option_page() {
 			<h3><label for="cc_email">Correo para enviar CC a: </label></h3>
 			<input type="text" id="cc_email" name="cc_email" value="<?php echo esc_attr(get_option('cccomm_cc_email'));?>" />
 			<p>
-				<input type="submit" name="submit" value="Gruardar email" />
+				<input type="submit" name="submit" value="Guardar email" />
 			</p>
-			<?php wp_nonce_field('cccome_admin_options-update')?>
+			<?php wp_nonce_field('d'); ?>
 		</form>
 	</div>
 <?php 
