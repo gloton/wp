@@ -55,6 +55,11 @@ function cccom_plugin_menu() {
 	//el tercero es la competencia o la finalidad de lo que haremos esto es el rol
 	//el cuarto va a ser como un identificador del elemento de menu
 	//el quinto es la funcion que sera llamada cccomm_option_page
+	# add_options_page
+	#Agrega un submenu a ajustes o setting el el backend
+	#http://codex.wordpress.org/Function_Reference/add_options_page
+	#http://codex.wordpress.org/A%C3%B1adiendo_Men%C3%BAs_de_Administraci%C3%B3n
+	
 	add_options_page('CC Comments Settings', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page' );
 }
 
