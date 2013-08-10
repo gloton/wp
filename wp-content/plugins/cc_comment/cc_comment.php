@@ -33,6 +33,11 @@ function ccom_setting_field() {
 value="<?php echo get_option('cccomm_cc_email'); ?>" />
 <?php 
 }
+function cccomm_setting_section() {
+?>
+	<p>Ajustes para el plugin CC Comments </p>
+<?php 
+}
 //registrar el plugin el menu administrador la cual llamara a la funcion que mostrara el input
 /*
  *@param cccomm_cc_email que es el id del input
@@ -41,8 +46,8 @@ value="<?php echo get_option('cccomm_cc_email'); ?>" />
  *@param general es la pagina a la que pertenecera
  * */
 function cccom_plugin_menu() {
-	
-	add_settings_field('cccomm_cc_email', 'CC Comment', 'ccom_setting_field', 'general');
+	add_settings_section('cccomm', 'CC Comment', 'cccomm_setting_section', 'general');
+	add_settings_field('cccomm_cc_email', 'CC Comment', 'ccom_setting_field', 'general','cccomm');
 }
 /*FIN AGREGAR UN INPUT PARA CAMBIAR OPCIONES DE WP EN EL SUBMENU GENERAL*/
 
