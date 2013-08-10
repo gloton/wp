@@ -60,7 +60,7 @@ function cccom_plugin_menu() {
 	#http://codex.wordpress.org/Function_Reference/add_dashboard_page
 	#http://codex.wordpress.org/A%C3%B1adiendo_Men%C3%BAs_de_Administraci%C3%B3n
 	
-	add_dashboard_page('CC Comments Settings', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page' );
+	add_menu_page('CC Comments', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page','/wp/wp-content/plugins/cc_comment/cc_icon.png' );
 }
 
 //cuando el usuario haga click en el menu de administrador se generara la vista que definimos en cccomm_option_page
