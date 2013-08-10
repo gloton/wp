@@ -55,12 +55,15 @@ function cccom_plugin_menu() {
 	//el tercero es la competencia o la finalidad de lo que haremos esto es el rol
 	//el cuarto va a ser como un identificador del elemento de menu
 	//el quinto es la funcion que sera llamada cccomm_option_page
+	//el sexto es la imagen asociada a ese item de menu
+	//el septimo(opcional) es la ubicacion o prioridad que tendra ese item de menu, 
+	// mientras mas pequeño el numero, mayor es la prioridad
 	# add_options_page
 	#Agrega un submenu a escritorio o dashboard en el backend
 	#http://codex.wordpress.org/Function_Reference/add_dashboard_page
 	#http://codex.wordpress.org/A%C3%B1adiendo_Men%C3%BAs_de_Administraci%C3%B3n
 	
-	add_menu_page('CC Comments', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page','/wp/wp-content/plugins/cc_comment/cc_icon.png' );
+	add_menu_page('CC Comments', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page','/wp/wp-content/plugins/cc_comment/cc_icon.png','1' );
 }
 
 //cuando el usuario haga click en el menu de administrador se generara la vista que definimos en cccomm_option_page
