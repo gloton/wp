@@ -25,46 +25,26 @@ function cccomm_init() {
 }
 add_action('admin_init','cccomm_init');
 
-//interfaz basica para el pluin
-function cccomm_option_page() {
-	
+/*INICIO AGREGAR UN INPUT PARA CAMBIAR OPCIONES DE WP EN EL SUBMENU GENERAL*/
+//funcion que va mostrara el input
+function ccom_setting_field() {
 ?>
-	<div class="wrap">
-		<!-- screen_icon esta funcion mostrara el icono de los elementos que se estan visualizando -->
-		<?php screen_icon();?>
-		<h2>Plugin CC Comment</h2> 
-		<p>Bienvenido al plugin CC Comment</p>
-		<form action="options.php" method="post" id="cc-comments-email-options-form">
-			<?php settings_fields('cccomm_options'); ?>
-			<h3><label for="cccomm_cc_email">Correo para enviar CC a: </label></h3>
-			<input type="text" id="cccomm_cc_email" name="cccomm_cc_email" value="<?php echo esc_attr(get_option('cccomm_cc_email'));?>" />
-			<p>
-				<input type="submit" name="submit" value="Guardar email" />
-			</p>
-		</form>
-	</div>
+<input type="text" name="cccomm_cc_email" id="cccomm_cc_email"
+value="<?php echo get_option('cccomm_cc_email'); ?>" />
 <?php 
 }
-
-//registrar el plugin el menu administrador
+//registrar el plugin el menu administrador la cual llamara a la funcion que mostrara el input
+/*
+ *@param cccomm_cc_email que es el id del input
+ *@param titulo del formulario
+ *@param cccomm_cc_email funcion que sera llamada
+ *@param general es la pagina a la que pertenecera
+ * */
 function cccom_plugin_menu() {
-
-	//por el momento lo vamos a registrar en setting -videotutorial 5.1
-	//el primer parametro es para pasar el titulo de la pagina
-	//el segundo es el titulo que veremos en el menu
-	//el tercero es la competencia o la finalidad de lo que haremos esto es el rol
-	//el cuarto va a ser como un identificador del elemento de menu
-	//el quinto es la funcion que sera llamada cccomm_option_page
-	//el sexto es la imagen asociada a ese item de menu
-	//el septimo(opcional) es la ubicacion o prioridad que tendra ese item de menu, 
-	// mientras mas pequeño el numero, mayor es la prioridad
-	# add_options_page
-	#Agrega un submenu a escritorio o dashboard en el backend
-	#http://codex.wordpress.org/Function_Reference/add_dashboard_page
-	#http://codex.wordpress.org/A%C3%B1adiendo_Men%C3%BAs_de_Administraci%C3%B3n
 	
-	add_menu_page('CC Comments', 'CC Comments', 'manage_options', 'cc-comments', 'cccomm_option_page','/wp/wp-content/plugins/cc_comment/cc_icon.png','1' );
+	add_settings_field('cccomm_cc_email', 'CC Comment', 'ccom_setting_field', 'general');
 }
+/*FIN AGREGAR UN INPUT PARA CAMBIAR OPCIONES DE WP EN EL SUBMENU GENERAL*/
 
 //cuando el usuario haga click en el menu de administrador se generara la vista que definimos en cccomm_option_page
 add_action('admin_menu', 'cccom_plugin_menu'); 
