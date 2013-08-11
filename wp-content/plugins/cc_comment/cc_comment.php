@@ -53,3 +53,15 @@ function cccom_plugin_menu() {
 
 //cuando el usuario haga click en el menu de administrador se generara la vista que definimos en cccomm_option_page
 add_action('admin_menu', 'cccom_plugin_menu'); 
+
+function cccomm_email_check() {
+	$email = isset($_POST['cccomm_cc_email']) ? $_POST['cccomm_cc_email'] : null;
+	$msg = 'invalid';
+	if ($email) {
+		if (is_email($email)) {
+			$msg = 'valid';
+		}
+	}
+	echo $msg;
+	die();
+}
