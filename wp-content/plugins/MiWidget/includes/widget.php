@@ -4,6 +4,8 @@ class mpw_widget extends WP_Widget {
 
     function mpw_widget(){
         // Constructor del Widget.
+		$widget_ops = array('classname' => 'mpw_widget', 'description' => "Descripción de Mi primer Widget" );
+    	$this->WP_Widget('mpw_widget', "Mi primer Widget", $widget_ops);
     }
 
     function widget($args,$instance){
