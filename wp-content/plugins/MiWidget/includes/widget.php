@@ -19,7 +19,7 @@ class mpw_widget extends WP_Widget {
     	echo $before_widget;
     	?>
 		<aside id='mpw_widget' class='widget mpw_widget'>
-		<h3 class='widget-title'>Mi Primer Widget</h3>
+		<h3 class='widget-title'>Mi Primer Widget Frontend</h3>
 		<p>¡Este es mi primer Widget!</p>
 		</aside>
 		<?php

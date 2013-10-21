@@ -21,6 +21,10 @@ class SimpleWidget extends WP_Widget {
 				'description' => 'Un simple Widget de jorge'
 		);
 		
+		#WP_Widget 
+		# primer argumento es el id, por defecto esta en false
+		# el segundo es el nombre del widget que aparecera en el backend
+		# referencia http://www.tig12.net/downloads/apidocs/wp/wp-includes/WP_Widget.class.html#det_methods_WP_Widget
 		//simple_widget vera reflejado en la funcion form
 		parent::WP_Widget('simple_widget', 'Simple Widget', $widget_options);
 	}
