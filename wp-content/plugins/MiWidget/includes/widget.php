@@ -26,12 +26,38 @@ class mpw_widget extends WP_Widget {
 		echo $after_widget;
     }
 
+    /*jagl la funcion update y form van de la mano porque el campo que actualizare en la funcion
+     * update, sera el campo que este declarado en la funcion form
+     */
+    
+    
+    /*
+	Si nuestro Widget está hecho sólo para mostrar información concreta, y no requiere de configuración 
+	interna, habríamos acabado aquí, no serían necesarias más funciones. En el caso de que requiera 
+	configuración, entonces debemos crear las funciones update y form.
+     */
     function update($new_instance, $old_instance){
         // Función de guardado de opciones   
+		$instance = $old_instance;
+		$instance["mpw_texto"] = strip_tags($new_instance["mpw_texto"]);
+		// Repetimos esto para tantos campos como tengamos en el formulario.
+		return $instance;        
     }
+	/*
+	La función update se encarga de guardar en la base de datos la configuración establecida para el Widget. 
+	Suele seguir una estructura similar a la que vemos siempre, cambiando los parámetros de los campos.
 
+	La función form es la que muestra el formulario de configuración del Widget en el Back End de WordPress. 
+	Por ejemplo, vamos a mostrar un texto:
+	*/
     function form($instance){
         // Formulario de opciones del Widget, que aparece cuando añadimos el Widget a una Sidebar
+?>
+         <p>
+            <label for="<?php echo $this->get_field_id('mpw_texto'); ?>">Texto del Widget</label>
+            <input class="widefat" id="<?php echo $this->get_field_id('mpw_texto'); ?>" name="<?php echo $this->get_field_name('mpw_texto'); ?>" type="text" value="<?php echo esc_attr($instance["mpw_texto"]); ?>" />
+         </p>  
+<?php        
     }    
 } 
 
