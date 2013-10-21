@@ -52,6 +52,9 @@ class mpw_widget extends WP_Widget {
 	*/
     function form($instance){
         // Formulario de opciones del Widget, que aparece cuando añadimos el Widget a una Sidebar
+        #get_field_id y get_field_name
+        # Las funciones get_field_id y get_field_name las usamos para que el guardado del Widget 
+        # sea correcto y coherente en cuanto a parámetros.
 ?>
          <p>
             <label for="<?php echo $this->get_field_id('mpw_texto'); ?>">Texto del Widget</label>
