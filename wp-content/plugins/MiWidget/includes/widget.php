@@ -20,7 +20,11 @@ class mpw_widget extends WP_Widget {
     	?>
 		<aside id='mpw_widget' class='widget mpw_widget'>
 		<h3 class='widget-title'>Mi Primer Widget Frontend</h3>
+		<!-- jagl, esto es lo que estaba antes
 		<p>¡Este es mi primer Widget!</p>
+		 -->
+		<!-- esto es para que la opcion que pusimos en el backend se pueda ver en el frontend -->
+		<p><?=$instance["mpw_texto"]?></p>
 		</aside>
 		<?php
 		echo $after_widget;
