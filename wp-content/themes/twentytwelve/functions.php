@@ -1,4 +1,5 @@
 <?php
+require_once dirname( __FILE__ ) . '/widgets.php';
 /**
  * Twenty Twelve functions and definitions.
  *

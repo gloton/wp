@@ -1,0 +1,72 @@
+******************************************************************************** 
+PACKAGE-LOG: 11:46:36 
+NOTICE: Do not post to public sites or forums 
+******************************************************************************** 
+duplicator: 0.4.6 
+wordpress: 3.5.2 
+php: 5.3.6-13ubuntu3.10 
+php sapi: apache2handler 
+server: Apache/2.2.20 (Ubuntu) 
+browser: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:25.0) Gecko/20100101 Firefox/25.0 
+package name: 20131031_sitiowordpressdeprueba 
+php_max_time: set from=30 to=5000 
+php_max_memory: set from=128M to=5000M 
+mysql wait_timeout:5000 
+recorded table id: 2 
+******************************************************************************** 
+BUILD SQL SCRIPT: 
+******************************************************************************** 
+wp_commentmeta (0) 
+wp_comments (2) 
+wp_duplicator (2) 
+wp_links (7) 
+wp_options (196) 
+wp_postmeta (104) 
+wp_posts (64) 
+wp_term_relationships (21) 
+wp_term_taxonomy (8) 
+wp_terms (8) 
+wp_usermeta (38) 
+wp_users (2) 
+SQL CREATED: /home/jorge/code/missitios/wordpress/wp-snapshots/5272ebdc603871223_20131031_sitiowordpressdeprueba_database.sql 
+SQL FILE SIZE: 463.86KB 
+SQL RUNTIME: 0.1859 sec. 
+******************************************************************************** 
+BUILD ZIP PACKAGE: 
+******************************************************************************** 
+PACKAGE DIR:  /home/jorge/code/missitios/wordpress 
+PACKAGE FILE: /home/jorge/code/missitios/wordpress/wp-snapshots/5272ebdc603871223_20131031_sitiowordpressdeprueba_package.zip 
+FILTER EXTENSIONS:  '' 
+FILTER DIRECTORIES: '' 
+---------------------------------------- 
+STARTING PACKAGE BUILD 
+ADDED=>SQL: /home/jorge/code/missitios/wordpress/wp-snapshots/5272ebdc603871223_20131031_sitiowordpressdeprueba_database.sql 
+BUILDING FILE LIST 
+FILE LIST COMPLETE: 0.8419 sec. 
+FILE LIST STATS: Dirs 314 | Files 1578 | Links 0 |  
+
+PACKAGE INFO: ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 1893
+    [filename] => /home/jorge/code/missitios/wordpress/wp-snapshots/5272ebdc603871223_20131031_sitiowordpressdeprueba_package.zip
+    [comment] => 
+)
+ 
+CREATING PACKAGE 
+CLOSING PACKAGE RESULT: '1' 
+PACKAGE FILE SIZE: 14.88MB 
+PACKAGE RUNTIME: 15.8947 sec. 
+******************************************************************************** 
+BUILD INSTALLER FILE: 
+******************************************************************************** 
+INSTALLER FILE: Build Start 
+INSTALLER FILE: Build Finished 
+INSTALLER FILE: Preping for use 
+INSTALLER FILE: Complete [/home/jorge/code/missitios/wordpress/wp-snapshots/5272ebdc603871223_20131031_sitiowordpressdeprueba_installer.php] 
+******************************************************************************** 
+FILE SIZE: Zip:14.88MB | SQL:463.86KB | Installer:527.06KB 
+TOTAL PROCESS RUNTIME: 16.1632 sec. 
+DONE PROCESSING => 20131031_sitiowordpressdeprueba 11:46:52 
+******************************************************************************** 
