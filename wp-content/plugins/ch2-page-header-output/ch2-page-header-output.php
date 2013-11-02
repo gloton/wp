@@ -7,7 +7,6 @@
   Version: 1.0
   Author URI: http://ylefebvre.ca/
  */
-
 add_action( 'wp_head', 'ch2pho_page_header_output' );
 
 function ch2pho_page_header_output() { ?>
@@ -29,5 +28,23 @@ function ch2pho_page_header_output() { ?>
 
 	</script>
 
-<?php }
+<?php 
+}
+
+register_activation_hook( __FILE__,'ch2pho_set_default_options_array' );
+function ch2pho_set_default_options_array() {
+	if ( get_option( 'ch2pho_options' ) === false ) {
+		$new_options['ga_account_name'] = "UA-000000-0";
+		$new_options['track_outgoing_links'] = false;
+		$new_options['version'] = "1.1";
+		add_option( 'ch2pho_options', $new_options );
+		} else {
+			$existing_options = get_option( 'ch2pho_options' );
+			if ( $existing_options['version'] < 1.1 ) {
+				$existing_options['track_outgoing_links'] = false;
+				$existing_options['version'] = "1.1";
+				update_option( 'ch2pho_options', $existing_options );
+			}
+		}
+}		
 ?>
