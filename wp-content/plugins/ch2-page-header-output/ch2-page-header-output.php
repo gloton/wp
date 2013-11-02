@@ -30,7 +30,7 @@ function ch2pho_page_header_output() { ?>
 
 <?php 
 }
-
+//se ejecutara cada vez que el plugin sea activado
 register_activation_hook( __FILE__,'ch2pho_set_default_options_array' );
 function ch2pho_set_default_options_array() {
 	if ( get_option( 'ch2pho_options' ) === false ) {
@@ -46,5 +46,20 @@ function ch2pho_set_default_options_array() {
 				update_option( 'ch2pho_options', $existing_options );
 			}
 		}
-}		
+}	
+#Prioridad: la indicamos en el tercer parametro. 1 le da mayor prioridad si hay mas de un mismo hook
+#add_action( 'admin_menu', 'ch2pho_settings_menu' , 1 );
+#add_options_page( $page_title, $menu_title, $capability,$menu_slug, $function );
+//registrara la funcion ch2pho_settings_menu, cuando WP construlla el menu del administrador
+add_action( 'admin_menu', 'ch2pho_settings_menu' , 1 );
+function ch2pho_settings_menu() {
+	add_options_page( 
+		'My Google Analytics Configuration',	//lo que aparece dentro de la etiqueta title
+		'My Google Analytics',					//item de menu que se muestra en el backend 
+		'manage_options',						//determina quien sera capaz de ver este item de menu, en este caso administrador o super-administrador
+		'ch2pho-my-google-analytics', 			//texto que sera usado internamente por WP para identificar el item(evitar nombre comun para evitar conflictos con otros plugins)
+		'ch2pho_config_page' 					//funcion que es llamada, y esta se encargara de mostrar el contenido de la pagina de configuracion
+	);
+}
+
 ?>
