@@ -56,6 +56,24 @@ function ch3sapi_admin_init() {
 		'ch3sapi_main_section',
 		array( 'name' => 'track_outgoing_links' ) 
 	);
+	
+	
+	// Add a new settings section within the group
+	add_settings_section(
+		'ch3sapi_otra_seccion',
+		'Esta es otra SEccion',
+		'ch3sapi_deOtraSeccion',
+		'ch3sapi_ajustes_seccion'
+	);
+	add_settings_field(
+	'camponumerouno',
+	'Campo Numero Uno',
+	'mifuncionquemostraraelcampo',
+	'ch3sapi_settings_section',
+	'ch3sapi_main_section',
+	array( 'name' => 'track_outgoing_links' )
+	);
+	
 }	
 /*================FUNCIONES LLAMADAS===================*/
 function ch3sapi_validate_options( $input ) {
@@ -65,6 +83,11 @@ function ch3sapi_validate_options( $input ) {
 function ch3sapi_main_setting_section_callback() { 
 ?>
 <p>This is the main configuration section.</p>
+<?php 
+}
+function ch3sapi_deOtraSeccion() { 
+?>
+<p>Esta es otra SECCION</p>
 <?php 
 }
 function ch3sapi_display_text_field( $data = array() ) {
@@ -82,6 +105,16 @@ function ch3sapi_display_check_box( $data = array() ) {
 <input type="checkbox" name="ch3sapi_options[<?php echo $name; ?>]" <?php if ( $options[$name] ) echo ' checked="checked"';?>/>
 <?php 
 }//fin funcion ch3sapi_display_check_box
+
+//mi propio campo
+function mifuncionquemostraraelcampo( $data = array() ) {
+	extract( $data );
+	$options = get_option( 'ch3sapi_options' );
+	?>
+<input type="text" name="ch3sapi_options[<?php echo $name;?>]" value="<?php echo esc_html( $options[$name] );?>"/><br />
+<?php 
+}//fin de funcion ch3sapi_display_text_field
+
 /*================FUNCIONES LLAMADAS===================*/
 
 
@@ -99,7 +132,6 @@ function ch3sapi_config_page() {
 ?>
 <div id="ch3sapi-general" class="wrap">
 	<h2>My Google Analytics – Settings API</h2>
-	<div style="background-color: aqua;"><?php echo print_r(get_option( 'ch3sapi_options' ));?></div>
 	<form name="ch3sapi_options_form_settings_api" method="post" action="options.php">
 		<div id="campos_agrupados">
 		<?php settings_fields( 'ch3sapi_settings' ); ?>
