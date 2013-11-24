@@ -81,13 +81,19 @@ function ch2pho_set_default_options_array() {
 add_action( 'admin_menu', 'ch2pho_settings_menu' );
 
 function ch2pho_settings_menu() {
-	$options_page = add_options_page( 'My Googli Analytics Configuration',
-		'My Googlo Analytics', 'manage_options',
-		'ch2pho-my-google-analytics', 'ch2pho_config_page' );
+	#add_options_page
+	# añade esta pagina como submenu de ajustes/settings ver distintosmenus(etiqueta) en evernote
+	$options_page = add_options_page( 
+		'My Google Analytics Configuration',//lo que aparece dentro de la etiqueta title
+		'My Google Analytics',//item de menu que se muestra en el backend
+		'manage_options',//determina quien sera capaz de ver este item de menu, en este caso administrador o super-administrador
+		'ch2pho-my-google-analytics', //texto que sera usado internamente por WP para identificar el item(evitar nombre comun para evitar conflictos con otros plugins)
+		'ch2pho_config_page' //funcion que es llamada, y esta se encargara de mostrar el contenido de la pagina de configuracion
+	);
 	//$options_page imprime:settings_page_ch2pho-my-google-analytics
 	if ($options_page) {
 		add_action( 'load-' . $options_page, 'ch2pho_help_tabs' );
-		//imprimiria:load-settings_page_ch2pho-my-google-analytics
+		//'load-' . $options_page imprimiria:load-settings_page_ch2pho-my-google-analytics
 	}
 }
 
@@ -104,13 +110,12 @@ function ch2pho_config_page() {
 	<h2>My Google Analytics</h2>
 	
 	<?php if (isset( $_GET['message'] ) && $_GET['message'] == '1') { ?>
-	<div id='message' class='updated fade'><p><strong>Settings Saved</strong></p></div>
+	<div id='message' class='updated fade'><p><strong>Su configuracion ha sido guardada</strong></p></div>
 	<?php } ?>
 
 	<form method="post" action="admin-post.php">
 
-	 <input type="hidden" name="action"
-		value="save_ch2pho_options" />
+	 <input type="hidden" name="action" value="save_ch2pho_options" />
 
 	 <!-- Adding security through hidden referrer field -->
 	 <?php wp_nonce_field( 'ch2pho' ); ?>
@@ -130,13 +135,14 @@ add_action( 'admin_init', 'ch2pho_admin_init' );
 
 function ch2pho_admin_init() {
 	//en evernote hookformadmin-post
+	//se ejecutara cuando el formulari se aprete submit
 	add_action( 'admin_post_save_ch2pho_options','process_ch2pho_options' );
 }
 
 function process_ch2pho_options() {
 	// Check that user has proper security level
 	if ( !current_user_can( 'manage_options' ) )
-	wp_die( 'Not allowed' );
+		wp_die( 'Not allowed' );
 
 	// Check that nonce field created in configuration form
 	// is present
@@ -145,6 +151,23 @@ function process_ch2pho_options() {
 
 	// Retrieve original plugin options array
 	$options = get_option( 'ch2pho_options' );
+	/*
+	echo "<pre>";
+	print_r($options);
+	echo "</pre>";
+	imprime
+	Array
+	(
+	    [ga_account_name] => UA-000000-jaglgf
+	    [track_outgoing_links] => 
+	    [version] => 1.1
+	)
+	*/
+	/*
+	print_r( array( 'ga_account_name' ));
+	imprime
+	Array ( [0] => ga_account_name ) 
+	*/
 
 	// Cycle through all text form fields and store their values
 	// in the options array
@@ -169,10 +192,20 @@ function process_ch2pho_options() {
 
 	// Store updated options array to database
 	update_option( 'ch2pho_options', $options );
-
+	
+	/*
+	echo add_query_arg( array( 'page' => 'ch2pho-my-google-analytics', 'message' => '1' ), admin_url( 'options-general.php' ) );
+	imprime
+	http://wordpress.local/wp-admin/options-general.php?page=ch2pho-my-google-analytics&message=1
+	
+	echo add_query_arg( array( 'page' => 'ch2pho-my-google-analytics', 'message' => '1' ));
+	imprime
+	/wp-admin/admin-post.php?page=ch2pho-my-google-analytics&message=1
+	*/
+	
 	// Redirect the page to the configuration form that was
 	// processed
-
+	//redirecciona al navegador devuelta a las opciones del plugin despues que todos los datos han sido almacenados
 	wp_redirect( add_query_arg( array( 'page' => 'ch2pho-my-google-analytics', 'message' => '1' ), admin_url( 'options-general.php' ) ) );
 	exit;
 }
@@ -182,7 +215,7 @@ function process_ch2pho_options() {
  *****************************************************************/
  
 function ch2pho_help_tabs() {
-	$screen = get_current_screen();
+	$screen = get_current_screen();//
 	$screen->add_help_tab( array(
 		'id'       => 'ch2pho-plugin-help-instructions',
 		'title'    => 'Instructions',
